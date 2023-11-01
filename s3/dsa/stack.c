@@ -12,6 +12,7 @@ stack *createStack();
 void push(stack *s, int data);
 void pop(stack *s);
 void tos(stack *s);
+void display(stack *s);
 
 int main()
 {
@@ -21,7 +22,7 @@ int main()
   int ch;
   do
   {
-    printf("1)Push\n2)Pop\n3)tos\n4)Exit\nChoice: ");
+    printf("1)Push\n2)Pop\n3)tos\n4)Display\n5)Exit\nChoice: ");
     scanf("%d", &ch);
     if (ch == 1)
     {
@@ -39,11 +40,15 @@ int main()
     {
       tos(s);
     }
-    else if (ch != 4)
+    else if (ch == 4)
+    {
+      display(s);
+    }
+    else if (ch != 5)
     {
       printf("\nInvalid option!\n");
     }
-  } while (ch != 4);
+  } while (ch != 5);
 }
 
 stack *createStack()
@@ -84,4 +89,14 @@ void tos(stack *s)
     return;
   }
   printf("\nTOS = %d\n", s->arr[s->top]);
+}
+
+void display(stack *s)
+{
+  printf("\n");
+  for (int i = s->top; i >= 0; i--)
+  {
+    printf("%d ", s->arr[i]);
+  }
+  printf("\n");
 }
