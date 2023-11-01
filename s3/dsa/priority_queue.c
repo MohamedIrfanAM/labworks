@@ -95,7 +95,7 @@ void enqueue(queue *q, int value, int priority)
   q->items[q->back].value = value;
   int back = q->back;
   int parent = back / 2;
-  while (back > 0)
+  while (back >= 0)
   {
     if (q->items[parent].priority < q->items[back].priority)
     {
@@ -103,10 +103,14 @@ void enqueue(queue *q, int value, int priority)
       q->items[parent] = q->items[back];
       q->items[back] = k;
     }
+    else
+    {
+      heapify(q, back);
+      break;
+    }
     back = parent;
     parent /= 2;
   }
-  heapify(q, 0);
 }
 
 void dequeue(queue *q)
