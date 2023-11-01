@@ -18,6 +18,7 @@ queue *createQueue();
 void enqueue(queue *q, int value, int priority);
 void dequeue(queue *q);
 void peak(queue *q);
+void display(queue *q);
 
 int main()
 {
@@ -25,7 +26,7 @@ int main()
   int ch;
   do
   {
-    printf("1)Enqueue\n2)Dequeue\n3)Peek\n4)Exit\nChoice: ");
+    printf("1)Enqueue\n2)Dequeue\n3)Peek\n4)Display\n5)Exit\nChoice: ");
     scanf("%d", &ch);
     if (ch == 1)
     {
@@ -46,11 +47,15 @@ int main()
     {
       peak(q);
     }
-    else if (ch != 4)
+    else if (ch == 4)
+    {
+      display(q);
+    }
+    else if (ch != 5)
     {
       printf("\nInvalid option!\n");
     }
-  } while (ch != 4);
+  } while (ch != 5);
 }
 
 queue *createQueue()
@@ -124,14 +129,32 @@ void dequeue(queue *q)
     printf("\nQueue underflow!\n");
     return;
   }
-  item removed = q->items[0];
   q->items[0] = q->items[q->back];
   q->back--;
   heapify(q, 0);
-  printf("\nRemoved Value = %d, priority = %d\n", removed.value, removed.priority);
 }
 
 void peak(queue *q)
 {
-  printf("\nRoot value = %d, priority = %d\n", q->items[0].value, q->items[0].priority);
+  printf("value = %d, priority = %d\n", q->items[0].value, q->items[0].priority);
+}
+
+void display(queue *q)
+{
+  queue *k = (queue *)malloc(sizeof(queue));
+  k->back = q->back;
+  k->size = q->size;
+  k->items = (item *)calloc(k->size, sizeof(item));
+  for (int i = 0; i <= q->back; i++)
+  {
+    k->items[i] = q->items[i];
+  }
+  printf("\n");
+  for (int i = 0; i <= q->back; i++)
+  {
+    peak(k);
+    dequeue(k);
+  }
+  printf("\n");
+  free(k);
 }
