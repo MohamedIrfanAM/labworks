@@ -11,7 +11,7 @@ typedef struct term
 term termsa[MAX_TERMS];
 term termsb[MAX_TERMS];
 
-void convert(int a[][3], term terms[]);
+void convert(int m, int n, int a[m][n], term terms[]);
 void display(term terms[]);
 void transpose(term terms[]);
 void add(term termsa[], term termsb[]);
@@ -48,8 +48,8 @@ int main()
   {
     printf("\n1)Display matrix a\n2)Display matrix b\n3)Transpose matrix a\n4)Transpose matrix b\n5)Add matrices\n6)Exit\nChoice: ");
     scanf("%d", &ch);
-    convert(a, termsa);
-    convert(b, termsb);
+    convert(m, n, a, termsa);
+    convert(p, q, b, termsb);
     if (ch == 1)
     {
       display(termsa);
@@ -81,15 +81,15 @@ int main()
   } while (ch != 6);
 }
 
-void convert(int a[][3], term terms[])
+void convert(int m, int n, int a[m][n], term terms[])
 {
   int i, j, k = 1;
-  terms[0].row = 3;
-  terms[0].col = 3;
+  terms[0].row = m;
+  terms[0].col = n;
   terms[0].value = 0;
-  for (i = 0; i < 3; i++)
+  for (i = 0; i < m; i++)
   {
-    for (j = 0; j < 3; j++)
+    for (j = 0; j < n; j++)
     {
       if (a[i][j] != 0)
       {
@@ -105,9 +105,10 @@ void convert(int a[][3], term terms[])
 
 void display(term terms[])
 {
+  printf("\nRow\tColumn\tValue\n");
   for (int i = 0; i <= terms[0].value; i++)
   {
-    printf("%d %d %d\n", terms[i].row, terms[i].col, terms[i].value);
+    printf("%d\t%d\t%d\n", terms[i].row, terms[i].col, terms[i].value);
   }
 }
 
