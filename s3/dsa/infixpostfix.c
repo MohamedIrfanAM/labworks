@@ -13,6 +13,7 @@ void push(stack *s, int data);
 void pop(stack *s);
 void infixToPostfix(char *infix, stack *s);
 void postfixToInfix(char *postfix, stack *s);
+int getPriority(char op);
 
 int main()
 {
@@ -65,42 +66,11 @@ void infixToPostfix(char *infix, stack *s)
     }
     else
     {
-      if (infix[i] == '+' || infix[i] == '-')
-      {
-        while (s->arr[s->top] == '*' || s->arr[s->top] == '/' || s->arr[s->top] == '^')
-        {
+      while(s->top >= 0 && getPriority(infix[i]) <= getPriority(s->arr[s->top])){
           printf("%c", s->arr[s->top]);
           pop(s);
-        }
-        push(s, infix[i]);
       }
-      else if (infix[i] == '*')
-      {
-        while (s->arr[s->top] == '/' || s->arr[s->top] == '^')
-        {
-          printf("%c", s->arr[s->top]);
-          pop(s);
-        }
-        push(s, infix[i]);
-      }
-      else if (infix[i] == '/')
-      {
-        while (s->arr[s->top] == '^')
-        {
-          printf("%c", s->arr[s->top]);
-          pop(s);
-        }
-        push(s, infix[i]);
-      }
-      else if (infix[i] == '^')
-      {
-        push(s, infix[i]);
-      }
-      else
-      {
-        printf("Invalid character\n");
-        return;
-      }
+      push(s, infix[i]);
     }
   }
 }
@@ -143,7 +113,7 @@ void postfixToInfix(char *postfix, stack *s)
       }
       else if (postfix[i] == '-')
       {
-        push(s, a - b);
+        push(s, b - a);
       }
       else if (postfix[i] == '*')
       {
@@ -151,7 +121,7 @@ void postfixToInfix(char *postfix, stack *s)
       }
       else if (postfix[i] == '/')
       {
-        push(s, a / b);
+        push(s, b / a);
       }
       else
       {
@@ -161,6 +131,31 @@ void postfixToInfix(char *postfix, stack *s)
     }
   }
   printf("\nExpression = %d\n", s->arr[s->top]);
+}
+
+int getPriority(char op)
+{
+  switch(op)
+  {
+    case '(':
+      return 0;
+      break;
+    case '+': 
+      return 1;
+      break;
+    case '-': 
+      return 1;
+      break;
+    case '*': 
+      return 2;
+      break;
+    case '/': 
+      return 2;
+      break;
+    case '^': 
+      return 3;
+      break;
+  }
 }
 
 stack *createStack()
