@@ -92,7 +92,6 @@ void bubblesort(node *head, int n)
 
 void display(node *head)
 {
-  printf("\n");
   node *current = head;
   while (current != NULL)
   {
