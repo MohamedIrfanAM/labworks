@@ -153,16 +153,20 @@ node *add(node *a, node *b)
       {
         int coeff = currenta->coeff + currentb->coeff;
         result = insertBegin(result, coeff, currenta->exp);
-        n += 1;
+        currenta = currenta->next;
+        currentb = currentb->next;
+      }
+      else if (currenta->exp < currentb->exp)
+      {
+        result = insertBegin(result, currenta->coeff, currenta->exp);
+        currenta = currenta->next;
       }
       else
       {
-        result = insertBegin(result, currenta->coeff, currenta->exp);
         result = insertBegin(result, currentb->coeff, currentb->exp);
-        n += 2;
+        currentb = currentb->next;
       }
-      currenta = currenta->next;
-      currentb = currentb->next;
+      n++;
     }
     else if (currenta != NULL)
     {
