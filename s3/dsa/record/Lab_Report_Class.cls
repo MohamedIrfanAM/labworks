@@ -74,7 +74,8 @@ bindingoffset=0mm, top=20mm,bottom=20mm}
 \titlespacing{\chapter}{0pt}{0pt}{0pt}
 
 % Section Format
-\titleformat{\section}[display]{\bfseries\large}{}{0em}{\underline}[\vspace{0em}]
+% \titleformat{\section}[display]{\bfseries\large}{}{0em}{\underline}[\vspace{0em}]
+
 
 % Part, for cycles
 \usepackage{titlesec}
@@ -89,14 +90,13 @@ bindingoffset=0mm, top=20mm,bottom=20mm}
 \newcommand{\experiment}[2]{
 \chapter{#1}
 \begin{tikzpicture}[remember picture, overlay]
-\node[anchor=north east] at ([xshift=-1cm,yshift=-2.5cm]current page.north east) {\large\textbf{Date:}\date{#2}};
+\node[anchor=north east] at ([xshift=-2cm,yshift=-2.5cm]current page.north east) {\large\textbf{Date:}\date{#2}};
 \end{tikzpicture}
 }
 
 % Custom footer
 \pagestyle{fancy}
 \renewcommand{\chaptermark}[1]
-% \renewcommand{\headrulewidth}[0pt]
 {\markboth{Experiment \thechapter: #1}{}}
 \lhead{}
 \chead{}
@@ -104,12 +104,12 @@ bindingoffset=0mm, top=20mm,bottom=20mm}
 \lfoot{}
 \cfoot{}
 \rfoot{}
-\fancypagestyle{plain}{
-\fancyhf{}
-\fancyfoot[L]{\nouppercase{\rightmark{Cycle:}\ \thepart}} % insert the part name on the left
-\fancyfoot[C]{\nouppercase{\leftmark}} % insert the chapter name on the center
-\fancyfoot[R]{Page:\ \thepage} % insert the page number on the right
-\renewcommand{\headrulewidth}{0pt} % remove the header rule
-\renewcommand{\footrulewidth}{0.4pt} % add a footer rule
+\fancypagestyle{labrecord}{
+    \fancyhf{}
+    \fancyfoot[L]{\nouppercase{\rightmark}} % insert the part name on the left
+    \fancyfoot[C]{\nouppercase{\leftmark}} % insert the chapter name on the center
+    \fancyfoot[R]{Page:\ \thepage} % insert the page number on the right
+    \renewcommand{\headrulewidth}{0pt} % remove the header rule
+    \renewcommand{\footrulewidth}{0.4pt} % add a footer rule
 }
-\usepackage{enumitem}
+\pagestyle{labrecord}
