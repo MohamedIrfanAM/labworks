@@ -44,41 +44,13 @@ int main()
       scanf("%d", &b[i][j]);
     }
   }
-  do
-  {
-    printf("\n1)Display matrix a\n2)Display matrix b\n3)Transpose matrix a\n4)Transpose matrix b\n5)Add matrices\n6)Exit\nChoice: ");
-    scanf("%d", &ch);
-    convert(m, n, a, termsa);
-    convert(p, q, b, termsb);
-    if (ch == 1)
-    {
-      display(termsa);
-    }
-    else if (ch == 2)
-    {
-      display(termsb);
-    }
-    if (ch == 3)
-    {
-      transpose(termsa);
-    }
-    else if (ch == 4)
-    {
-      transpose(termsb);
-    }
-    else if (ch == 5)
-    {
-      if (m != p || n != q)
-      {
-        printf("\nInvalid operation!\n");
-        continue;
-      }
-      add(termsa, termsb);
-    }
-    else if (ch != 6)
-    {
-    }
-  } while (ch != 6);
+  convert(m, n, a, termsa);
+  convert(p, q, b, termsb);
+  printf("\nMatrix A = \n");
+  display(termsa);
+  printf("\nMatrix B = \n");
+  display(termsb);
+  add(termsa, termsb);
 }
 
 void convert(int m, int n, int a[m][n], term terms[])
