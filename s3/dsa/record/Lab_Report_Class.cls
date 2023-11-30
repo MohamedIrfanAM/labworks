@@ -10,7 +10,7 @@
 \usepackage{titlesec}
 \renewcommand\familydefault{\sfdefault}
 \usepackage{tgheros}
-\usepackage[defaultmono]{droidmono}
+\usepackage[defaultmono]{droidsansmono}
 \usepackage{enumitem}
 \usepackage{amsmath,amssymb,amsthm,textcomp}
 \usepackage{multicol}
@@ -18,7 +18,7 @@
 
 \usepackage{geometry}
 \geometry{left=22mm,right=22mm,%
-bindingoffset=0mm, top=20mm,bottom=20mm}
+    bindingoffset=0mm, top=20mm,bottom=20mm}
 
 
 \linespread{1.3}
@@ -68,9 +68,9 @@ bindingoffset=0mm, top=20mm,bottom=20mm}
     \centering
 }
 [
-\vspace{-0.5ex}%
-\rule{\textwidth}{0.3pt}
-] 
+    \vspace{-0.5ex}%
+    \rule{\textwidth}{0.3pt}
+]
 \titlespacing{\chapter}{0pt}{0pt}{0pt}
 
 % Section Format
@@ -80,18 +80,18 @@ bindingoffset=0mm, top=20mm,bottom=20mm}
 % Part, for cycles
 \usepackage{titlesec}
 \titleformat{\part}[display]
-  {\normalfont\fontsize{50}{60}\selectfont\bfseries\centering} 
-  {}
-  {20pt}
-  {\underline}
+{\normalfont\fontsize{24.88}{60}\selectfont\bfseries\centering}
+{}
+{20pt}
+{\underline}
 \titlespacing*{\part}{70pt}{80pt}{20pt}
 
 % Experiment with title and date
 \newcommand{\experiment}[2]{
-\chapter{#1}
-\begin{tikzpicture}[remember picture, overlay]
-\node[anchor=north east] at ([xshift=-2cm,yshift=-2.5cm]current page.north east) {\large\textbf{Date:}\date{#2}};
-\end{tikzpicture}
+    \chapter{#1}
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=north east] at ([xshift=-2cm,yshift=-2.5cm]current page.north east) {\large\textbf{Date:}\date{#2}};
+    \end{tikzpicture}
 }
 
 % Custom footer
