@@ -107,7 +107,7 @@
 \fancypagestyle{labrecord}{
     \fancyhf{}
     \fancyfoot[L]{\nouppercase{\rightmark}} % insert the part name on the left
-    \fancyfoot[C]{\nouppercase{\leftmark}} % insert the chapter name on the center
+    \fancyfoot[C]{Cycle:\ \thepart\ \ \ \nouppercase{\leftmark}} % insert the chapter name on the center
     \fancyfoot[R]{Page:\ \thepage} % insert the page number on the right
     \renewcommand{\headrulewidth}{0pt} % remove the header rule
     \renewcommand{\footrulewidth}{0.4pt} % add a footer rule
