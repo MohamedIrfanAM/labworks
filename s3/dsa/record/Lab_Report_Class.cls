@@ -96,20 +96,19 @@
 
 % Custom footer
 \pagestyle{fancy}
-\renewcommand{\chaptermark}[1]
-{\markboth{Experiment \thechapter: #1}{}}
+\renewcommand{\chaptermark}[1]{\markboth{Experiment \thechapter: #1}{}}
 \lhead{}
 \chead{}
 \rhead{}
 \lfoot{}
 \cfoot{}
-\rfoot{}
 \fancypagestyle{labrecord}{
     \fancyhf{}
-    \fancyfoot[L]{\nouppercase{\rightmark}} % insert the part name on the left
-    \fancyfoot[C]{Cycle:\ \thepart\ \ \ \nouppercase{\leftmark}} % insert the chapter name on the center
-    \fancyfoot[R]{Page:\ \thepage} % insert the page number on the right
-    \renewcommand{\headrulewidth}{0pt} % remove the header rule
-    \renewcommand{\footrulewidth}{0.4pt} % add a footer rule
+    \fancyhead[L]{\vspace{3pt}\nouppercase{\rightmark}} % insert the part name on the left
+    \fancyhead[R]{\vspace{3pt}Cycle:\ \thepart\ \ \nouppercase{\leftmark}} % insert the chapter name on the center
+    \renewcommand{\headrulewidth}{0.4pt} % add a header rule
+    \renewcommand{\footrulewidth}{0pt} % remove the footer rule
+    \fancyfoot[C]{\thepage}
+    \fancyheadoffset[L]{20pt}
 }
 \pagestyle{labrecord}
