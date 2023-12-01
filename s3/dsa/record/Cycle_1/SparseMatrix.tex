@@ -10,9 +10,9 @@ To convert 2D matrix into sparse matrix, and perform addition operation and tran
     \item \textbf{Start}
     \item Initialize $k$, \texttt{row}, \texttt{column}, and \texttt{value}.
     \item Loop through matrix rows (\texttt{i}):
-          \begin{enumerate}[label=2.\arabic*:]
+          \begin{enumerate}[label=2.\arabic*.]
             \item Loop through matrix columns (\texttt{j}):
-                  \begin{enumerate}[label=2.1.\arabic*:]
+                  \begin{enumerate}[label=2.1.\arabic*.]
                     \item If \texttt{matrix[i][j]} is non-zero:
                           Set \texttt{row}, \texttt{column}, and \texttt{value}.
                           Increment $k$.
@@ -28,7 +28,7 @@ To convert 2D matrix into sparse matrix, and perform addition operation and tran
     \item \textbf{Start}
     \item Print "Row\texttt{\textbackslash t}Column\texttt{\textbackslash t}Value".
     \item Loop through \texttt{terms} array (\texttt{i}):
-          \begin{enumerate}[label=3.\arabic*:]
+          \begin{enumerate}[label=3.\arabic*.]
             \item Print \texttt{terms[i].row},\texttt{terms[i].column}, \texttt{terms[i].value}.
           \end{enumerate}
     \item \textbf{Stop}
@@ -40,9 +40,9 @@ To convert 2D matrix into sparse matrix, and perform addition operation and tran
     \item \textbf{Start}
     \item Initialize \texttt{transposed[terms[0].value]}.
     \item Loop through columns (\texttt{k}):
-          \begin{enumerate}[label=2.\arabic*:]
+          \begin{enumerate}[label=2.\arabic*.]
             \item Loop through \texttt{terms} array (\texttt{i}):
-                  \begin{enumerate}[label=2.1.\arabic*:]
+                  \begin{enumerate}[label=2.1.\arabic*.]
                     \item If \texttt{terms[i].column} is equal to \texttt{k}:
                           Copy \texttt{terms[i]} to \texttt{transposed[i]}.
                   \end{enumerate}
@@ -53,23 +53,23 @@ To convert 2D matrix into sparse matrix, and perform addition operation and tran
 
   \subsection{Matrix Addition}
   Create a function \texttt{add(termsa[], termsb[])}:
-  \begin{enumerate}[label=\arabic*:,left=0pt]
+  \begin{enumerate}[label=\arabic*.,left=0pt]
     \item \textbf{Start}
     \item Initialize \texttt{sum[MAX\_TERMS]}.
     \item Initialize \texttt{i}, \texttt{j}, and \texttt{k}.
     \item Loop while \texttt{i} $\leq$ \texttt{termsa[0].value}\ OR \texttt{j} $\leq$ \texttt{termsb[0].value}:
-          \begin{enumerate}[label=4.\arabic*:]
+          \begin{enumerate}[label=4.\arabic*.]
             \item If \texttt{i} $\leq$ \texttt{termsa[0].value}\ AND \texttt{j} $\leq$ \texttt{termsb[0].value}:
-                  \begin{enumerate}[label=4.1.\arabic*:]
+                  \begin{enumerate}[label=4.1.\arabic*.]
                     \item If \texttt{termsa[i].row} $=$ \texttt{termsb[j].row}\ AND \texttt{termsa[i].column} $=$ \texttt{termsb[j].column}:
-                          \begin{enumerate}[label=4.1.1.\arabic*:]
+                          \begin{enumerate}[label=4.1.1.\arabic*.]
                             \item Set \texttt{sum[k].row}, \texttt{sum[k].column}, and \texttt{sum[k].value} as the sum of corresponding \newline values.
                             \item Increment \texttt{i} and \texttt{j}.
                           \end{enumerate}
 
                     \item Else if (\texttt{termsa[i].row} $<$ \texttt{termsb[j].row}) \newline
                           \hspace*{2em} OR (\texttt{termsa[i].row} $=$ \texttt{termsb[j].row} AND \texttt{termsa[i].column} $<$ \texttt{termsb[j].column}):
-                          \begin{enumerate}[label=4.1.2.\arabic*:]
+                          \begin{enumerate}[label=4.1.2.\arabic*.]
                             \item Set \texttt{sum[k]} as \texttt{termsa[i]}.
                             \item Increment \texttt{i}.
                           \end{enumerate}
@@ -79,12 +79,12 @@ To convert 2D matrix into sparse matrix, and perform addition operation and tran
                     \item Increment \texttt{j}.
                   \end{enumerate}
             \item Else if \texttt{i} $\leq$ \texttt{termsa[0].value}:
-                  \begin{enumerate}[label=4.2.\arabic*:]
+                  \begin{enumerate}[label=4.2.\arabic*.]
                     \item Set \texttt{sum[k]} as \texttt{termsa[i]}.
                     \item Increment \texttt{i}.
                   \end{enumerate}
             \item Else if \texttt{j} $\leq$ \texttt{termsb[0].value}:
-                  \begin{enumerate}[label=4.3.\arabic*:]
+                  \begin{enumerate}[label=4.3.\arabic*.]
                     \item Set \texttt{sum[k]} as \texttt{termsb[j]}.
                     \item Increment \texttt{j}.
                   \end{enumerate}
@@ -98,7 +98,7 @@ To convert 2D matrix into sparse matrix, and perform addition operation and tran
 
   \subsection{Main}
 
-  \begin{enumerate}[label=\arabic*:,left=0pt]
+  \begin{enumerate}[label=\arabic*.,left=0pt]
     \item \textbf{Start}
     \item Define a structure for a matrix term with row, column, and value fields.
     \item Define constant \texttt{MAX\_TERMS} as 101.\
