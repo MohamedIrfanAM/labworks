@@ -15,6 +15,7 @@
 \usepackage{amsmath,amssymb,amsthm,textcomp}
 \usepackage{multicol}
 \usepackage{tikz}
+\usepackage{lmodern}
 
 \usepackage{geometry}
 \geometry{left=22mm,right=22mm,%
