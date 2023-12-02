@@ -70,7 +70,7 @@
 [display]
 {\bfseries\large}
 {Experiment No: \ \textnormal{\thechapter}}
-{0pt}
+{-1ex}
 {
     \huge
     \vspace{0ex}
@@ -80,7 +80,7 @@
     \vspace{-0.5ex}%
     \rule{\textwidth}{0.3pt}
 ]
-\titlespacing{\chapter}{0pt}{0pt}{0pt}
+\titlespacing{\chapter}{0pt}{-30pt}{0pt}
 
 % Section Format
 % \titleformat{\section}[display]{\bfseries\large}{}{0em}{\underline}[\vspace{0em}]
@@ -99,7 +99,7 @@
 \newcommand{\experiment}[2]{
     \chapter{#1}
     \begin{tikzpicture}[remember picture, overlay]
-        \node[anchor=north east] at ([xshift=-2cm,yshift=-2.5cm]current page.north east) {\large\textbf{Date:}\date{#2}};
+        \node[anchor=north east] at ([xshift=-2cm,yshift=-1.78cm]current page.north east) {\large\textbf{Date:}\date{#2}};
     \end{tikzpicture}
 }
 
