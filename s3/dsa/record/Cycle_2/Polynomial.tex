@@ -1,0 +1,151 @@
+\experiment{Polynomial Linked List}{Your_Date_Here}
+
+\section{Aim}
+To implement a program that performs operations on polynomials, including multiplication and addition.
+
+\section{Algorithm}
+ {\fontfamily{lmtt}\selectfont
+
+  \subsection{Structure Definition}
+  Create a structure \texttt{Node} with the following attributes:
+  \begin{enumerate}[label=\arabic*:,left=0pt]
+    \item Integer \texttt{exp} to store the exponent of the term.
+    \item Integer \texttt{coeff} to store the coefficient of the term.
+    \item Pointer to \texttt{Node} \texttt{next} for linking nodes.
+  \end{enumerate}
+
+  \subsection{Function: \texttt{insertBegin}}
+  Create a function \texttt{insertBegin(head, coeff, exp)}:
+  \begin{enumerate}[label=\arabic*:,left=0pt]
+    \item \textbf{Start}
+    \item Allocate memory for a new \texttt{Node} structure using \texttt{malloc}.
+    \item If allocation fails, print "Memory allocation failed" and exit.
+    \item Set \texttt{coeff} and \texttt{exp} in the new node.
+    \item Set \texttt{next} of the new node to \texttt{head}.
+    \item Set \texttt{head} to the new node.
+    \item Return the updated \texttt{head}.
+    \item \textbf{Stop}
+  \end{enumerate}
+
+  \subsection{Function: \texttt{bubblesort}}
+  Create a function \texttt{bubblesort(head, n)}:
+  \begin{enumerate}[label=\arabic*:,left=0pt]
+    \item \textbf{Start}
+    \item Loop from \texttt{i} equal to \texttt{n - 1} down to 0:
+          \begin{enumerate}[label=2.\arabic*:, start=1]
+            \item Set \texttt{current} to \texttt{head}.
+            \item Loop from \texttt{j} equal to 0 to \texttt{i}:
+                  \begin{enumerate}[label=2.2.\arabic*:, start=1]
+                    \item Set \texttt{next} to \texttt{current->next}.
+                    \item If \texttt{current->exp > next->exp}, swap the \texttt{coeff} and \texttt{exp} values.
+                    \item Set \texttt{current} to \texttt{next}.
+                  \end{enumerate}
+          \end{enumerate}
+    \item \textbf{Stop}
+  \end{enumerate}
+
+  \subsection{Function: \texttt{display}}
+  Create a function \texttt{display(head)}:
+  \begin{enumerate}[label=\arabic*:,left=0pt]
+    \item \textbf{Start}
+    \item Set \texttt{current} to \texttt{head}.
+    \item Loop while \texttt{current} is not \texttt{NULL}:
+          \begin{enumerate}[label=2.\arabic*:, start=1]
+            \item If \texttt{current} is not equal to \texttt{head}, print " + ".
+            \item Print \texttt{current->coeff} and \texttt{current->exp}.
+            \item Set \texttt{current} to \texttt{current->next}.
+          \end{enumerate}
+    \item Print a newline.
+    \item \textbf{Stop}
+  \end{enumerate}
+
+  \subsection{Function: \texttt{multiply}}
+  Create a function \texttt{multiply(a, b)}:
+  \begin{enumerate}[label=\arabic*:,left=0pt]
+    \item \textbf{Start}
+    \item Set \texttt{result} to \texttt{NULL}.
+    \item Set \texttt{currenta} to \texttt{a}.
+    \item Set \texttt{n} to 0.
+    \item Loop while \texttt{currenta} is not \texttt{NULL}:
+          \begin{enumerate}[label=2.\arabic*:, start=1]
+            \item Set \texttt{currentb} to \texttt{b}.
+            \item Loop while \texttt{currentb} is not \texttt{NULL}:
+                  \begin{enumerate}[label=2.2.\arabic*:, start=1]
+                    \item Calculate \texttt{coeff} and \texttt{exp} by multiplying \texttt{currenta->coeff} with \texttt{currentb->coeff} and adding \texttt{currenta->exp} with \texttt{currentb->exp}.
+                    \item Set \texttt{currentr} to \texttt{result}.
+                    \item Set \texttt{alreadyExist} to 0.
+                    \item Loop while \texttt{currentr} is not \texttt{NULL}:
+                          \begin{enumerate}[label=2.2.3.\arabic*:, start=1]
+                            \item If \texttt{currentr->exp == exp}, update \texttt{currentr->coeff} by adding \texttt{coeff} and set \texttt{alreadyExist} to 1.
+                            \item Set \texttt{currentr} to \texttt{currentr->next}.
+                          \end{enumerate}
+                    \item If \texttt{alreadyExist} is 0, increment \texttt{n}, and insert a new node with \texttt{coeff} and \texttt{exp} at the beginning of \texttt{result}.
+                  \end{enumerate}
+            \item Set \texttt{currentb} to \texttt{currentb->next}.
+          \end{enumerate}
+    \item Call \texttt{bubblesort(result, n)}.
+    \item \textbf{Stop}
+  \end{enumerate}
+
+  \subsection{Function: \texttt{add}}
+  Create a function \texttt{add(a, b)}:
+  \begin{enumerate}[label=\arabic*:,left=0pt]
+    \item \textbf{Start}
+    \item Set \texttt{result} to \texttt{NULL}.
+    \item Set \texttt{currenta} to \texttt{a}.
+    \item Set \texttt{currentb} to \texttt{b}.
+    \item Set \texttt{n} to 0.
+    \item Loop while \texttt{currenta} is not \texttt{NULL} or \texttt{currentb} is not \texttt{NULL}:
+          \begin{enumerate}[label=2.\arabic*:, start=1]
+            \item If \texttt{currenta} and \texttt{currentb} are not \texttt{NULL}:
+                  \begin{enumerate}[label=2.2.\arabic*:, start=1]
+                    \item If \texttt{currenta->exp == currentb->exp}, calculate \texttt{coeff} by adding \texttt{currenta->coeff} and \texttt{currentb->coeff} and insert a new node with \texttt{coeff} and \texttt{currenta->exp} at the beginning of \texttt{result}.
+                    \item Move \texttt{currenta} and \texttt{currentb} to their next nodes.
+                  \end{enumerate}
+            \item If only \texttt{currenta} is not \texttt{NULL}, insert a new node with \texttt{currenta->coeff} and \texttt{currenta->exp} at the beginning of \texttt{result}.
+            \item If only \texttt{currentb} is not \texttt{NULL}, insert a new node with \texttt{currentb->coeff} and \texttt{currentb->exp} at the beginning of \texttt{result}.
+            \item Increment \texttt{n}.
+          \end{enumerate}
+    \item Call \texttt{bubblesort(result, n)}.
+    \item \textbf{Stop}
+  \end{enumerate}
+
+  \subsection{Main Function}
+  In the \texttt{main} function:
+  \begin{enumerate}[label=\arabic*:, start=1]
+    \item \textbf{Start}
+    \item Declare \texttt{a} and \texttt{b} as \texttt{NULL}.
+    \item Declare integers \texttt{n1} and \texttt{n2}.
+    \item Print "Enter the number of terms of a: ".
+    \item Take user input for \texttt{n1} and insert nodes at the beginning of \texttt{a} with user-input coefficients and exponents.
+    \item Print "Enter the number of terms of b: ".
+    \item Take user input for \texttt{n2} and insert nodes at the beginning of \texttt{b} with user-input coefficients and exponents.
+    \item Call \texttt{bubblesort(a, n1)} and \texttt{bubblesort(b, n2)}.
+    \item Print "a = " and \texttt{display(a)}.
+    \item Print "b = " and \texttt{display(b)}.
+    \item Call \texttt{multiply(a, b)} and assign the result to \texttt{product}.
+    \item Print "Product = " and \texttt{display(product)}.
+    \item Call \texttt{add(a, b)} and assign the result to \texttt{sum}.
+    \item Print "Sum = " and \texttt{display(sum)}.
+    \item \textbf{Stop}
+  \end{enumerate}
+  \textbf{End Algorithm}
+ }
+
+\section{C Program}
+\begin{lstlisting}[label={list:c_program:polynomial_operations}]
+#include <stdlib.h>
+#include <stdio.h>
+
+typedef struct Node {
+    int exp;
+    int coeff;
+    struct Node *next;
+} node;
+
+// Function declarations...
+
+int main() {
+    // Implementation...
+}
+\end{lstlisting}
