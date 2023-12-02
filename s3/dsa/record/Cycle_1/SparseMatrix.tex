@@ -104,21 +104,27 @@ To convert 2D matrix into sparse matrix, and perform addition operation and tran
     \item Define constant \texttt{MAX\_TERMS} as 101.\
     \item Define arrays \texttt{termsa[MAX\_TERMS]} and \texttt{termsb[MAX\_TERMS]} for sparse matrices.
     \item Initialize \texttt{ch} to 0.
-    \item Display "Enter order of matrix a:".
+    \item Print "Enter order of matrix a:".
     \item Read \texttt{m}, \texttt{n}.
     \item Initialize \texttt{int a[m][n]}.
-    \item Display "Enter matrix a:".
+    \item Print "Enter matrix a:".
     \item Read matrix \texttt{a}.
     \item Call \texttt{convert(m, n, a, termsa)}.
-    \item Display "Enter order of matrix b:".
+    \item Print "Enter order of matrix b:".
     \item Read \texttt{p}, \texttt{q}.
     \item Initialize \texttt{int b[p][q]}.
-    \item Display "Enter matrix b:".
+    \item Print "Enter matrix b:".
     \item Read matrix \texttt{b}.
     \item Call \texttt{convert(p, q, b, termsb)}.
+    \item Print "Matrix A:".
     \item Call \texttt{display(termsa)}.
+    \item Print "Matrix B:".
     \item Call \texttt{display(termsb)}.
     \item Call \texttt{add(termsa, termsb)}.
+    \item Print "Transpose A:".
+    \item Call \texttt{transpose(termsa)}.
+    \item Print "Transpose B:".
+    \item Call \texttt{transpose(termsb)}.
     \item \textbf{Stop}
   \end{enumerate}
  }
@@ -174,11 +180,19 @@ int main()
   }
   convert(m, n, a, termsa);
   convert(p, q, b, termsb);
+
   printf("\nMatrix A = \n");
   display(termsa);
+
   printf("\nMatrix B = \n");
   display(termsb);
+
   add(termsa, termsb);
+
+  printf("\nTraspose A = :\n");
+  transpose(termsa);
+  printf("\nTraspose B = :\n");
+  transpose(termsb);
 }
 
 void convert(int m, int n, int a[m][n], term terms[])
@@ -305,6 +319,7 @@ void add(term termsa[], term termsb[])
 \section{Output}
 
 \includegraphics[]{Cycle_1/Outputs/SparseMatrix.png}
+\includegraphics[]{Cycle_1/Outputs/SparseTranspose.png}
 
 \section{Result}
 Implemented sparse matrix conversion,addition and transpose.Program is executed successfully and output is verified.

@@ -171,4 +171,9 @@ void add(term termsa[], term termsb[])
   sum[0].value = k - 1;
   printf("\nSum:\n");
   display(sum);
+
+  printf("\nTraspose A = :\n");
+  transpose(termsa);
+  printf("\nTraspose B = :\n");
+  transpose(termsb);
 }
