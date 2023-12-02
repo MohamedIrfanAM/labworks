@@ -20,16 +20,16 @@ int main()
   s->size = 100;
   s->top = -1;
   int ch;
+  printf("1)Push\n2)Pop\n3)tos\n4)Display\n5)Exit\n");
   do
   {
-    printf("1)Push\n2)Pop\n3)tos\n4)Display\n5)Exit\nChoice: ");
+    printf("Choice: ");
     scanf("%d", &ch);
     if (ch == 1)
     {
       int x;
       printf("\nEnter the data: ");
       scanf("%d", &x);
-      printf("\n");
       push(s, x);
     }
     else if (ch == 2)
