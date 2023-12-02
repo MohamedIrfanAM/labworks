@@ -12,7 +12,7 @@ stack *createStack();
 void push(stack *s, int data);
 void pop(stack *s);
 void infixToPostfix(char *infix, stack *s);
-void postfixToInfix(char *postfix, stack *s);
+void postfixEvaluate(char *postfix, stack *s);
 int getPriority(char op);
 
 int main()
@@ -21,7 +21,7 @@ int main()
   char exp[100];
   gets(exp);
   stack *s = createStack();
-  printf("1)infix to postfix\n2)postfix to infix\nChoice: ");
+  printf("1)infix to postfix\n2)postfix evaluate\nChoice: ");
   int ch;
   scanf("%d", &ch);
   if (ch == 1)
@@ -30,7 +30,7 @@ int main()
   }
   else if (ch == 2)
   {
-    postfixToInfix(exp, s);
+    postfixEvaluate(exp, s);
   }
   else
   {
@@ -66,16 +66,17 @@ void infixToPostfix(char *infix, stack *s)
     }
     else
     {
-      while(s->top >= 0 && getPriority(infix[i]) <= getPriority(s->arr[s->top])){
-          printf("%c", s->arr[s->top]);
-          pop(s);
+      while (s->top >= 0 && getPriority(infix[i]) <= getPriority(s->arr[s->top]))
+      {
+        printf("%c", s->arr[s->top]);
+        pop(s);
       }
       push(s, infix[i]);
     }
   }
 }
 
-void postfixToInfix(char *postfix, stack *s)
+void postfixEvaluate(char *postfix, stack *s)
 {
   int j = 0;
   for (j = 0; postfix[j] != '\0'; j++)
@@ -135,26 +136,26 @@ void postfixToInfix(char *postfix, stack *s)
 
 int getPriority(char op)
 {
-  switch(op)
+  switch (op)
   {
-    case '(':
-      return 0;
-      break;
-    case '+': 
-      return 1;
-      break;
-    case '-': 
-      return 1;
-      break;
-    case '*': 
-      return 2;
-      break;
-    case '/': 
-      return 2;
-      break;
-    case '^': 
-      return 3;
-      break;
+  case '(':
+    return 0;
+    break;
+  case '+':
+    return 1;
+    break;
+  case '-':
+    return 1;
+    break;
+  case '*':
+    return 2;
+    break;
+  case '/':
+    return 2;
+    break;
+  case '^':
+    return 3;
+    break;
   }
 }
 
