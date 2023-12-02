@@ -107,6 +107,31 @@ To implement a Circular queue data structure and perform basic operations such a
     \item Print a newline.
     \item \textbf{Stop}
   \end{enumerate}
+
+  \subsection{Main Function}
+  In the \texttt{main} function:
+  \begin{enumerate}[label=\arabic*:, start=1]
+    \item \textbf{Start}
+    \item Create a circular queue \texttt{q} using \texttt{createQueue()}.
+    \item Initialize \texttt{ch}.
+    \item \textbf{Start Menu Loop}
+          \begin{enumerate}[label=4.\arabic*:, start=1]
+            \item Print menu options.
+            \item Take user input for \texttt{ch}.
+            \item If \texttt{ch} is 1:
+                  \begin{enumerate}[label=4.1.\arabic*:, start=1]
+                    \item Take user input for \texttt{x}.
+                    \item Call \texttt{enqueue(q, x)}.
+                  \end{enumerate}
+            \item If \texttt{ch} is 2, call \texttt{dequeue(q)}.
+            \item If \texttt{ch} is 3, call \texttt{display(q)}.
+            \item If \texttt{ch} is 4, exit the loop.
+            \item If \texttt{ch} is none of the above, print "Invalid option!".
+          \end{enumerate}
+    \item \textbf{Stop Menu Loop}
+    \item \textbf{Stop}
+  \end{enumerate}
+
  }
 \section{C Program}
 \begin{lstlisting}[label={list:c_program:circular_queue}]
