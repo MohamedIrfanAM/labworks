@@ -20,9 +20,10 @@ int main()
 {
   queue *q = createQueue();
   int ch;
+  printf("1)EnqueueFront\n2)DequeueFront\n3)EnqueueBack\n4)DequeuBack\n5)Display\n6)Exit\n");
   do
   {
-    printf("1)EnqueueFront\n2)DequeueFront\n3)EnqueueBack\n4)DequeuBack\n5)Display\n6)Exit\nChoice: ");
+    printf("Choice: ");
     scanf("%d", &ch);
     if (ch == 1)
     {
@@ -54,7 +55,7 @@ int main()
     }
     else if (ch != 6)
     {
-      printf("\nInvalid option!\n");
+      // printf("\nInvalid option!\n");
     }
   } while (ch != 6);
 }

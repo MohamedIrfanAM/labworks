@@ -1,0 +1,334 @@
+\experiment{Dequeue}{5/11/2023}
+
+\section{Aim}
+To implement a deque (double-ended queue) data structure and perform basic operations such as enqueue at the front, dequeue from the front, enqueue at the back, dequeue from the back, and display using an array.
+
+\section{Algorithm}
+ {\fontfamily{lmtt}\selectfont
+
+  \subsection{Create Deque}
+  \begin{enumerate}[label=\arabic*:,left=0pt]
+    \item \textbf{Start}
+    \item Define a structure for a deque:
+          \begin{enumerate}[label=2.\arabic*.]
+            \item Include \texttt{front}, \texttt{back}, \texttt{size}, and an integer array \texttt{arr[100]}.
+          \end{enumerate}
+    \item Create a function \texttt{createDeque()}:
+          \begin{enumerate}[label=3.\arabic*.]
+            \item Allocate memory for a new deque \texttt{q}.
+            \item Set \texttt{q->front} and \texttt{q->back} to -1, and \texttt{q->size} to 100.
+          \end{enumerate}
+    \item Return \texttt{q}.
+    \item \textbf{Stop}
+  \end{enumerate}
+
+  \subsection{Enqueue at the Back Function}
+  Create a function \texttt{enqueueBack(q, data)}:
+  \begin{enumerate}[label=\arabic*:,left=0pt]
+    \item \textbf{Start}
+    \item If \texttt{q->front} is -1 and \texttt{q->back} is -1:
+          \begin{enumerate}[label=2.\arabic*.]
+            \item Set \texttt{q->front} and \texttt{q->back} to 0.
+            \item Set \texttt{q->arr[q->back]} to \texttt{data}.
+            \item Return.
+          \end{enumerate}
+    \item If \texttt{q->back} is equal to \texttt{q->size - 1}:
+          \begin{enumerate}[label=2.\arabic*.]
+            \item Print "Queue overflow" and return.
+          \end{enumerate}
+    \item Increment \texttt{q->back}.
+    \item Set \texttt{q->arr[q->back]} to \texttt{data}.
+    \item \textbf{Stop}
+  \end{enumerate}
+
+  \subsection{Enqueue at the Front Function}
+  Create a function \texttt{enqueueFront(q, data)}:
+  \begin{enumerate}[label=\arabic*:,left=0pt]
+    \item \textbf{Start}
+    \item If \texttt{q->front} is -1 and \texttt{q->back} is -1:
+          \begin{enumerate}[label=2.\arabic*.]
+            \item Set \texttt{q->front} and \texttt{q->back} to 0.
+            \item Set \texttt{q->arr[q->front]} to \texttt{data}.
+            \item Return.
+          \end{enumerate}
+    \item If \texttt{q->front} is 0:
+          \begin{enumerate}[label=2.\arabic*.]
+            \item Print "Queue overflow" and return.
+          \end{enumerate}
+    \item Decrement \texttt{q->front}.
+    \item Set \texttt{q->arr[q->front]} to \texttt{data}.
+    \item \textbf{Stop}
+  \end{enumerate}
+
+  \subsection{Dequeue from the Front Function}
+  Create a function \texttt{dequeueFront(q)}:
+  \begin{enumerate}[label=\arabic*:,left=0pt]
+    \item \textbf{Start}
+    \item Declare \texttt{removed}.
+    \item Check if \texttt{q->back} is equal to \texttt{q->front}:
+          \begin{enumerate}[label=2.\arabic*.]
+            \item Check if \texttt{q->front} is -1:
+                  \begin{enumerate}[label=3.\arabic*.]
+                    \item Print "Queue underflow" and return.
+                  \end{enumerate}
+            \item Set \texttt{removed} to \texttt{q->arr[q->front]}.
+            \item Set \texttt{q->front} and \texttt{q->back} to -1.
+          \end{enumerate}
+    \item Else:
+          \begin{enumerate}[label=2.\arabic*.]
+            \item Set \texttt{removed} to \texttt{q->arr[q->front]}.
+            \item Increment \texttt{q->front}.
+          \end{enumerate}
+    \item Print "Removed Element =", \texttt{removed}.
+    \item \textbf{Stop}
+  \end{enumerate}
+
+  \subsection{Dequeue from the Back Function}
+  Create a function \texttt{dequeueBack(q)}:
+  \begin{enumerate}[label=\arabic*:,left=0pt]
+    \item \textbf{Start}
+    \item Declare \texttt{removed}.
+    \item Check if \texttt{q->back} is equal to \texttt{q->front}:
+          \begin{enumerate}[label=2.\arabic*.]
+            \item Check if \texttt{q->front} is -1:
+                  \begin{enumerate}[label=3.\arabic*.]
+                    \item Print "Queue underflow" and return.
+                  \end{enumerate}
+            \item Set \texttt{removed} to \texttt{q->arr[q->back]}.
+            \item Set \texttt{q->front} and \texttt{q->back} to -1.
+          \end{enumerate}
+    \item Else:
+          \begin{enumerate}[label=2.\arabic*.]
+            \item Set \texttt{removed} to \texttt{q->arr[q->back]}.
+            \item Decrement \texttt{q->back}.
+          \end{enumerate}
+    \item Print "Removed Element =", \texttt{removed}.
+    \item \textbf{Stop}
+  \end{enumerate}
+
+  \subsection{Display Function}
+  Create a function \texttt{display(q)}:
+  \begin{enumerate}[label=\arabic*:,left=0pt]
+    \item \textbf{Start}
+    \item Check if \texttt{q->front} is -1 and \texttt{q->back} is -1:
+          \begin{enumerate}[label=2.\arabic*.]
+            \item Print "Queue is empty!" and return.
+          \end{enumerate}
+    \item Print "Queue elements are":
+          \begin{enumerate}[label=2.\arabic*.]
+            \item Loop from \texttt{q->front} to \texttt{q->back}:
+                  \begin{enumerate}[label=2.1.\arabic*.]
+                    \item Print \texttt{q->arr[i]}, followed by a space.
+                  \end{enumerate}
+          \end{enumerate}
+    \item Print a newline.
+    \item \textbf{Stop}
+  \end{enumerate}
+
+  \subsection{Main Function}
+  In the \texttt{main} function:
+  \begin{enumerate}[label=\arabic*:, start=1]
+    \item \textbf{Start}
+    \item Create a deque \texttt{q} using \texttt{createDeque()}.
+    \item Initialize \texttt{ch}.
+    \item \textbf{Start Menu Loop}
+          \begin{enumerate}[label=4.\arabic*:, start=1]
+            \item Print menu options.
+            \item Take user input for \texttt{ch}.
+            \item If \texttt{ch} is 1:
+                  \begin{enumerate}[label=4.1.\arabic*:, start=1]
+                    \item Take user input for \texttt{x}.
+                    \item Call \texttt{enqueueFront(q, x)}.
+                  \end{enumerate}
+            \item If \texttt{ch} is 2, call \texttt{dequeueFront(q)}.
+            \item If \texttt{ch} is 3:
+                  \begin{enumerate}[label=4.1.\arabic*:, start=1]
+                    \item Take user input for \texttt{x}.
+                    \item Call \texttt{enqueueBack(q, x)}.
+                  \end{enumerate}
+            \item If \texttt{ch} is 4, call \texttt{dequeueBack(q)}.
+            \item If \texttt{ch} is 5, call \texttt{display(q)}.
+            \item If \texttt{ch} is 6, exit the loop.
+            \item If \texttt{ch} is none of the above, print "Invalid option!".
+          \end{enumerate}
+    \item \textbf{Stop Menu Loop}
+    \item \textbf{Stop}
+  \end{enumerate}
+  \textbf{End Algorithm}
+ }
+
+\section{C Program}
+\begin{lstlisting}[label={list:c_program:deque}]
+#include <stdlib.h>
+#include <stdio.h>
+
+typedef struct queue
+{
+  int front;
+  int back;
+  int size;
+  int arr[100];
+} queue;
+
+queue *createQueue();
+void enqueueBack(queue *q, int data);
+void enqueueFront(queue *q, int data);
+void dequeueFront(queue *q);
+void dequeueBack(queue *q);
+void display(queue *q);
+
+int main()
+{
+  queue *q = createQueue();
+  int ch;
+  printf("1)EnqueueFront\n2)DequeueFront\n3)EnqueueBack\n4)DequeuBack\n5)Display\n6)Exit\n");
+  do
+  {
+    printf("Choice: ");
+    scanf("%d", &ch);
+    if (ch == 1)
+    {
+      int x;
+      printf("\nEnter the data: ");
+      scanf("%d", &x);
+      printf("\n");
+      enqueueFront(q, x);
+    }
+    else if (ch == 2)
+    {
+      dequeueFront(q);
+    }
+    if (ch == 3)
+    {
+      int x;
+      printf("\nEnter the data: ");
+      scanf("%d", &x);
+      printf("\n");
+      enqueueBack(q, x);
+    }
+    else if (ch == 4)
+    {
+      dequeueBack(q);
+    }
+    else if (ch == 5)
+    {
+      display(q);
+    }
+    else if (ch != 6)
+    {
+      // printf("\nInvalid option!\n");
+    }
+  } while (ch != 6);
+}
+
+queue *createQueue()
+{
+  queue *q = (queue *)malloc(sizeof(queue));
+  q->front = -1;
+  q->back = -1;
+  q->size = 100;
+  return q;
+}
+
+void enqueueBack(queue *q, int data)
+{
+  if (q->front == -1 && q->back == -1)
+  {
+    q->front = 0;
+    q->back = 0;
+    q->arr[q->back] = data;
+    return;
+  }
+  else if (q->back == q->size - 1)
+  {
+    printf("\nQueue overflow\n");
+    return;
+  }
+  q->back++;
+  q->arr[q->back] = data;
+}
+
+void enqueueFront(queue *q, int data)
+{
+  if (q->front == -1 && q->back == -1)
+  {
+    q->front = 0;
+    q->back = 0;
+    q->arr[q->back] = data;
+    return;
+  }
+  else if (q->front == 0)
+  {
+    printf("\nQueue overflow\n");
+    return;
+  }
+  q->front--;
+  q->arr[q->front] = data;
+}
+
+void dequeueFront(queue *q)
+{
+  int removed;
+  if (q->back == q->front)
+  {
+    if (q->front == -1)
+    {
+      printf("\nQueue underflow!\n");
+      return;
+    }
+    removed = q->arr[q->front];
+    q->front = -1;
+    q->back = -1;
+  }
+  else
+  {
+    removed = q->arr[q->front];
+    q->front++;
+  }
+  printf("\nRemoved Element = %d\n", removed);
+}
+
+void dequeueBack(queue *q)
+{
+  int removed;
+  if (q->back == q->front)
+  {
+    if (q->front == -1)
+    {
+      printf("\nQueue underflow!\n");
+      return;
+    }
+    removed = q->arr[q->front];
+    q->front = -1;
+    q->back = -1;
+  }
+  else
+  {
+    removed = q->arr[q->back];
+    q->back--;
+  }
+  printf("\nRemoved Element = %d\n", removed);
+}
+
+void display(queue *q)
+{
+  if (q->front == -1 && q->back == -1)
+  {
+    printf("\nQueue is empty!\n");
+    return;
+  }
+  printf("\nQueue elements are\n");
+  for (int i = q->front; i <= q->back; i++)
+  {
+    printf("%d ", q->arr[i]);
+  }
+  printf("\n");
+}
+
+\end{lstlisting}
+
+\section{Output}
+\includegraphics[]{Cycle_1/Outputs/Dequeue.png}
+
+\section{Result}
+Program is executed and output is verified
