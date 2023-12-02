@@ -18,9 +18,10 @@ int main()
 {
   queue *q = createQueue();
   int ch;
+  printf("1)Enqueue\n2)Dequeue\n3)Display\n4)Exit\n");
   do
   {
-    printf("1)Enqueue\n2)Dequeue\n3)Display\n4)Exit\nChoice: ");
+    printf("Choice: ");
     scanf("%d", &ch);
     if (ch == 1)
     {
