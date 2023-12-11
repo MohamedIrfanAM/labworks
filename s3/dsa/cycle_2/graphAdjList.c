@@ -199,6 +199,7 @@ void bfs(graph *g, int start)
     }
   }
   free(q);
+  free(visited);
   printf("\n");
 }
 
