@@ -52,7 +52,7 @@ int main()
 
   /*
     1 - 2 - 4 - 6 - 8 - 10
-    |   |   |   |
+    |
     3 - 5 - 7 - 9
   */
 
@@ -60,19 +60,13 @@ int main()
   insertEdge(g, 1, 3);
   insertEdge(g, 2, 1);
   insertEdge(g, 2, 4);
-  insertEdge(g, 3, 4);
   insertEdge(g, 3, 5);
-  insertEdge(g, 4, 5);
   insertEdge(g, 4, 6);
-  insertEdge(g, 5, 6);
   insertEdge(g, 5, 7);
-  insertEdge(g, 6, 7);
   insertEdge(g, 6, 8);
-  insertEdge(g, 7, 8);
   insertEdge(g, 7, 9);
   insertEdge(g, 8, 9);
   insertEdge(g, 8, 10);
-  insertEdge(g, 9, 10);
   display(g);
   dfs(g, 2);
   bfs(g, 2);
@@ -150,19 +144,27 @@ void dfs(graph *g, int start)
   push(s, start);
   while (s->top != -1)
   {
-    int node = pop(s);
-    if (visited[node])
+    int node = s->arr[s->top];
+    if (!visited[node])
     {
-      continue;
+      printf("%d , ", node);
     }
     visited[node] = 1;
-    printf("%d , ", node);
     edge *current = g->list[node];
-
+    int flag = 0;
     while (current != NULL)
     {
-      push(s, current->to);
+      if (!visited[current->to])
+      {
+        push(s, current->to);
+        flag = 1;
+        break;
+      }
       current = current->next;
+    }
+    if (!flag)
+    {
+      pop(s);
     }
   }
   free(visited);
