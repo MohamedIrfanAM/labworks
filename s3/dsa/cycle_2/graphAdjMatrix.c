@@ -52,27 +52,21 @@ int main()
 
   /*
     1 - 2 - 4 - 6 - 8 - 10
-    |   |   |   |
+    |
     3 - 5 - 7 - 9
   */
-  printf("Inserting elements!");
+
   insertEdge(g, 1, 2);
   insertEdge(g, 1, 3);
   insertEdge(g, 2, 1);
   insertEdge(g, 2, 4);
-  insertEdge(g, 3, 4);
   insertEdge(g, 3, 5);
-  insertEdge(g, 4, 5);
   insertEdge(g, 4, 6);
-  insertEdge(g, 5, 6);
   insertEdge(g, 5, 7);
-  insertEdge(g, 6, 7);
   insertEdge(g, 6, 8);
-  insertEdge(g, 7, 8);
   insertEdge(g, 7, 9);
   insertEdge(g, 8, 9);
   insertEdge(g, 8, 10);
-  insertEdge(g, 9, 10);
   display(g);
   dfs(g, 2);
   bfs(g, 2);
@@ -106,7 +100,6 @@ void insertEdge(graph *g, int from, int to)
   }
   g->matrix[from][to] = 1;
   g->e++;
-  printf("Added element");
 }
 
 void display(graph *g)
@@ -139,26 +132,25 @@ void dfs(graph *g, int start)
   push(s, start);
   while (s->top != -1)
   {
-    int node = pop(s);
-    if (visited[node])
+    int node = s->arr[s->top];
+    if (!visited[node])
     {
-      continue;
+      printf("%d , ", node);
     }
     visited[node] = 1;
-    printf("%d , ", node);
-    // edge *current = g->list[node];
-
-    // while (current != NULL)
-    // {
-    //   push(s, current->to);
-    //   current = current->next;
-    // }
+    int flag = 0;
     for (int i = 0; i <= g->v; i++)
     {
-      if (g->matrix[node][i] != 0)
+      if (g->matrix[node][i] != 0 && !visited[i])
       {
         push(s, i);
+        flag = 1;
+        break;
       }
+    }
+    if (!flag)
+    {
+      pop(s);
     }
   }
   free(visited);
