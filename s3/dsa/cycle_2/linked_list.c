@@ -19,9 +19,10 @@ int main()
 {
   node *head = NULL;
   int ch;
+  printf("1)Display\n2)InsertBegin\n3)InsertEnd\n4)InsertIndex\n5)deleteBegin\n6)deleteEnd\n7)deleteIndex\n8)Exit\n");
   do
   {
-    printf("1)Display\n2)InsertBegin\n3)InsertEnd\n4)InsertIndex\n5)deleteBegin\n6)deleteEnd\n7)deleteIndex\n8)Exit\nChoice: ");
+    printf("Choice: ");
     scanf("%d", &ch);
     if (ch == 1)
     {
@@ -91,6 +92,7 @@ node *insertEnd(node *head, int data)
 {
   node *temp = (node *)malloc(sizeof(node));
   temp->data = data;
+  temp->next = NULL;
   if (head == NULL)
   {
     head = temp;
