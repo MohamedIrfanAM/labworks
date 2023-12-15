@@ -16,9 +16,10 @@ int main()
 {
   node *head = NULL;
   int ch;
+  printf("1)Display\n2)Push\n3)Pop\n4)Exit");
   do
   {
-    printf("1)Display\n2)Push\n3)Pop\n4)Exit\nChoice: ");
+    printf("\nChoice: ");
     scanf("%d", &ch);
     if (ch == 1)
     {
@@ -29,7 +30,6 @@ int main()
       int x;
       printf("\nEnter the data: ");
       scanf("%d", &x);
-      printf("\n");
       head = insertBegin(head, x);
       display(head);
     }
