@@ -139,6 +139,7 @@ int hashClosedGet(hashClosed *h, int key)
 
 int main()
 {
+  printf("Closed Addressing(Direct Chaining)\n");
   hashClosed *hashclosed = createHashClosed(10);
   hashClosedInsert(hashclosed, 11, 8);
   hashClosedInsert(hashclosed, 21, 10);
@@ -146,6 +147,7 @@ int main()
   printf("key = %d, value = %d\n", 11, hashClosedGet(hashclosed, 11));
   printf("key = %d, value = %d\n", 21, hashClosedGet(hashclosed, 21));
 
+  printf("\nOpen Addressing(Linear Probing)\n");
   hashOpen *hashopen = createHashOpen(10);
   hashOpenInsert(hashopen, 23, 90);
   hashOpenInsert(hashopen, 43, 100);
