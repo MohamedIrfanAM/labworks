@@ -70,7 +70,7 @@
 [display]
 {\bfseries\large}
 {Experiment No: \ \textnormal{\thechapter}}
-{-1ex}
+{0ex}
 {
     \huge
     \vspace{0ex}
