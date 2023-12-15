@@ -18,9 +18,10 @@ int main()
   node *root = NULL;
 
   int ch;
+  printf("\n1)Insert Node\n2)Search Node\n3)Delete Node\n5)Exit");
   do
   {
-    printf("\n1)Insert Node\n2)Search Node\n3)Delete Node\n5)Exit\nChoice: ");
+    printf("\nChoice: ");
     scanf("%d", &ch);
     if (ch == 1)
     {
@@ -113,7 +114,6 @@ node *delete(node *root, int key)
   node *prev = NULL;
   while (current != NULL)
   {
-    prev = current;
     if (current->data == key)
     {
       if (current->left != NULL && current->right != NULL)
@@ -149,10 +149,12 @@ node *delete(node *root, int key)
     }
     else if (current->data < key)
     {
+      prev = current;
       current = current->right;
     }
     else
     {
+      prev = current;
       current = current->left;
     }
   }
