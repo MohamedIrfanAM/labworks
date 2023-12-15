@@ -32,9 +32,10 @@ int main()
   node *root = NULL;
 
   int ch;
+  printf("1)Insert Node\n2)PreOrder Traversal\n3)InOrder Traversal\n4)PostOrder Traversal\n5)Exit");
   do
   {
-    printf("1)Insert Node\n2)PreOrder Traversal\n3)InOrder Traversal\n4)PostOrder Traversal\n5)Exit\nChoice: ");
+    printf("\nChoice: ");
     scanf("%d", &ch);
     if (ch == 1)
     {
