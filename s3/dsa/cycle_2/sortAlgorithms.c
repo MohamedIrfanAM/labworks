@@ -182,7 +182,52 @@ void heapSort(int *arr, int n)
 
 int main()
 {
-  int arr[10] = {4, 5, 10, 3, 8, 2, 6, 7, 1, 9};
-  heapSort(arr, 10);
-  display(arr, 10);
+  int n;
+  printf("Enter the number of elements in the array: ");
+  scanf("%d", &n);
+  int arr[n];
+
+  printf("Enter the elements of the array: ");
+  for (int i = 0; i < n; i++)
+  {
+    scanf("%d", &arr[i]);
+  }
+
+  int choice;
+  printf("Menu:\n");
+  printf("1. Selection Sort\n");
+  printf("2. Bubble Sort\n");
+  printf("3. Insertion Sort\n");
+  printf("4. Merge Sort\n");
+  printf("5. Quick Sort\n");
+  printf("6. Heap Sort\n");
+  printf("Enter your choice: ");
+  scanf("%d", &choice);
+
+  switch (choice)
+  {
+  case 1:
+    selectionSort(arr, n);
+    break;
+  case 2:
+    bubbleSort(arr, n);
+    break;
+  case 3:
+    insersionSort(arr, n);
+    break;
+  case 4:
+    mergeSort(arr, 0, n - 1);
+    break;
+  case 5:
+    quickSort(arr, 0, n - 1);
+    break;
+  case 6:
+    heapSort(arr, n);
+    break;
+  default:
+    printf("Invalid choice.\n");
+    break;
+  }
+  printf("Sorted array: ");
+  display(arr, n);
 }
