@@ -13,7 +13,7 @@ To implement a program for various operations on a singly linked list.
     \item Pointer to \texttt{Node} \texttt{next} to store the address of the next node.
   \end{enumerate}
 
-  \subsection{Function: \texttt{insertBegin}}
+  \subsection{Insert Begin Function}
   Create a function \texttt{insertBegin(head, data)}:
   \begin{enumerate}[label=\arabic*:,left=0pt]
     \item \textbf{Start}
@@ -25,7 +25,7 @@ To implement a program for various operations on a singly linked list.
     \item \textbf{Stop}
   \end{enumerate}
 
-  \subsection{Function: \texttt{insertEnd}}
+  \subsection{Insert End Function}
   Create a function \texttt{insertEnd(head, data)}:
   \begin{enumerate}[label=\arabic*:,left=0pt]
     \item \textbf{Start}
@@ -43,7 +43,7 @@ To implement a program for various operations on a singly linked list.
     \item \textbf{Stop}
   \end{enumerate}
 
-  \subsection{Function: \texttt{display}}
+  \subsection{Display Function}
   Create a function \texttt{display(head)}:
   \begin{enumerate}[label=\arabic*:,left=0pt]
     \item \textbf{Start}
@@ -59,7 +59,7 @@ To implement a program for various operations on a singly linked list.
     \item \textbf{Stop}
   \end{enumerate}
 
-  \subsection{Function: \texttt{insertIndex}}
+  \subsection{Insert at index function}
   Create a function \texttt{insertIndex(head, data, index)}:
   \begin{enumerate}[label=\arabic*:,left=0pt]
     \item \textbf{Start}
@@ -73,7 +73,7 @@ To implement a program for various operations on a singly linked list.
           \begin{enumerate}[label=2.\arabic*:, start=1]
             \item Set \texttt{prev} to \texttt{current}.
             \item Set \texttt{current} to \texttt{current->next}.
-            \item If \texttt{i == index - 1}, set \texttt{prev->next} to \texttt{temp}, \texttt{temp->next} to \texttt{current}, and \texttt{done} to 1. Break the loop.
+            \item If \texttt{i == index - 1}, set \texttt{prev->next} to \texttt{temp}, \texttt{temp->next} to \texttt{current}, and \texttt{done} to 1. \newline Break the loop.
             \item Increment \texttt{i}.
           \end{enumerate}
     \item If \texttt{!done}, print "Index not valid!!".
@@ -93,7 +93,7 @@ To implement a program for various operations on a singly linked list.
     \item \textbf{Stop}
   \end{enumerate}
 
-  \subsection{Function: \texttt{deleteEnd}}
+  \subsection{Delete end function}
   Create a function \texttt{deleteEnd(head)}:
   \begin{enumerate}[label=\arabic*:,left=0pt]
     \item \textbf{Start}
@@ -112,7 +112,7 @@ To implement a program for various operations on a singly linked list.
     \item \textbf{Stop}
   \end{enumerate}
 
-  \subsection{Function: \texttt{deleteIndex}}
+  \subsection{Delete at index function}
   Create a function \texttt{deleteIndex(head, index)}:
   \begin{enumerate}[label=\arabic*:,left=0pt]
     \item \textbf{Start}
@@ -125,7 +125,7 @@ To implement a program for various operations on a singly linked list.
           \begin{enumerate}[label=2.\arabic*:, start=1]
             \item Set \texttt{prev} to \texttt{current}.
             \item Set \texttt{current} to \texttt{current->next}.
-            \item If \texttt{i == index - 1}, set \texttt{prev->next} to \texttt{current->next}, free \texttt{current}, and set \texttt{done} to 1. Break the loop.
+            \item If \texttt{i == index - 1}, set \texttt{prev->next} to \texttt{current->next}, free \texttt{current}, and set \texttt{done} to 1. \newline Break the loop.
             \item Increment \texttt{i}.
           \end{enumerate}
     \item If \texttt{!done}, print "Index not valid!!".
