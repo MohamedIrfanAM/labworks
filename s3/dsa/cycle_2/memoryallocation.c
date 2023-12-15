@@ -31,7 +31,12 @@ int main()
   memory *m = initializeMemory(sizes, 10);
   displayMemory(m);
   worstFit(m, 7);
-  // garbageCollect(m);
+  displayMemory(m);
+  bestFit(m, 6);
+  displayMemory(m);
+  bestFit(m, 5);
+  displayMemory(m);
+  garbageCollect(m);
   displayMemory(m);
   freeMemory(m, 0);
   displayMemory(m);
