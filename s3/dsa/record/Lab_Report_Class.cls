@@ -121,3 +121,11 @@
     \fancyheadoffset[L]{20pt}
 }
 \pagestyle{labrecord}
+
+%Water mark
+\usepackage{draftwatermark}
+\SetWatermarkText{\\@irfan\_}
+\SetWatermarkScale{0.1}
+\SetWatermarkAngle{0}
+\SetWatermarkHorCenter{0.9\paperwidth}
+\SetWatermarkVerCenter{0.97\paperheight}
