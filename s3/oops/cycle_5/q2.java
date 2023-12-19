@@ -37,7 +37,7 @@ public class q2 extends JPanel implements MouseListener {
   }
 
   public static void main(String[] args) {
-    JFrame frame = new JFrame("Hello World!");
+    JFrame frame = new JFrame("Mouse Event Example");
     frame.setSize(200, 200);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.add(new q2());

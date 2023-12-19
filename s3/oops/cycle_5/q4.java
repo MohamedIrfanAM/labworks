@@ -38,7 +38,7 @@ public class q4 extends JPanel {
   }
 
   public static void main(String[] args) {
-    JFrame frame = new JFrame("Hello World!");
+    JFrame frame = new JFrame("Wave Graph");
     frame.setSize(600, 400);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.add(new q4());
