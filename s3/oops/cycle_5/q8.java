@@ -7,24 +7,22 @@ public class q8 {
       Class.forName("com.mysql.cj.jdbc.Driver");
       Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/javalab", "root", "");
       Statement stmt = con.createStatement();
-      // ResultSet rs = stmt.executeQuery("SELECT * FROM phonedetails");
-
       Scanner scanner = new Scanner(System.in);
       System.out.print("Enter the number of students: ");
       int n = scanner.nextInt();
-      scanner.nextLine(); // Consume the newline character
+      scanner.nextLine();
 
       for (int i = 0; i < n; i++) {
         System.out.print("Enter the roll number of student " + (i + 1) + ": ");
         int rollNumber = scanner.nextInt();
-        scanner.nextLine(); // Consume the newline character
+        scanner.nextLine();
 
         System.out.print("Enter the name of student " + (i + 1) + ": ");
         String name = scanner.nextLine();
 
         System.out.print("Enter the CGPA of student " + (i + 1) + ": ");
         double cgpa = scanner.nextDouble();
-        scanner.nextLine(); // Consume the newline character
+        scanner.nextLine();
 
         String query = "INSERT INTO student (roll_no, name, cgpa) VALUES (" + rollNumber + ", '" + name + "', "
             + cgpa + ")";
@@ -45,5 +43,4 @@ public class q8 {
       System.out.println(e);
     }
   }
-
 }
