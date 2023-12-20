@@ -5,137 +5,138 @@ Implement boundary tag method of dynamic memory allocation using doubly linked l
 
 \section{Algorithm}
 
-\subsection{Structures}
-\begin{enumerate}[label=\arabic*.,left=0pt]
-  \item Define \texttt{block} structure with \texttt{size}, \texttt{isOccupied}, \texttt{next}, and \texttt{prev} attributes.
-  \item Define \texttt{memory} structure with \texttt{totalSize}, \texttt{freeSize}, \texttt{head}, and \texttt{tail} attributes.
-\end{enumerate}
+ {\fontfamily{lmtt}\selectfont
+  \subsection{Structures}
+  \begin{enumerate}[label=\arabic*.,left=0pt]
+    \item Define \texttt{block} structure with \texttt{size}, \texttt{isOccupied}, \texttt{next}, and \texttt{prev} attributes.
+    \item Define \texttt{memory} structure with \texttt{totalSize}, \texttt{freeSize}, \texttt{head}, and \texttt{tail} attributes.
+  \end{enumerate}
 
-\subsection{Function to Initialize Memory}
-\begin{enumerate}[label=\arabic*.,left=0pt]
-  \item Create a function \texttt{initializeMemory(sizes, length)}:
-        \begin{enumerate}[label=2.\arabic*.,left=0pt]
-          \item Allocate memory for \texttt{memory} structure.
-          \item Initialize \texttt{head} with the first block:
-                \begin{enumerate}[label=2.2.\arabic*.,left=0pt]
-                  \item Allocate memory for the first \texttt{block}.
-                  \item Set \texttt{size}, \texttt{isOccupied}, \texttt{next}, and \texttt{prev} attributes.
-                  \item Set \texttt{head} and \texttt{tail} to the first block.
-                \end{enumerate}
-          \item Initialize rest of the blocks:
-                \begin{enumerate}[label=2.3.\arabic*.,left=0pt]
-                  \item Loop through the array \texttt{sizes} starting from index 1:
-                        \begin{enumerate}[label=2.3.\arabic*.,left=0pt]
-                          \item Allocate memory for a new \texttt{block}.
-                          \item Set \texttt{size}, \texttt{isOccupied}, \texttt{next}, and \texttt{prev} attributes.
-                          \item Link the new block to the previous block.
-                          \item Update \texttt{tail} to the new block.
-                          \item Update \texttt{totalSize} and \texttt{freeSize}.
-                        \end{enumerate}
-                \end{enumerate}
-          \item Return the created \texttt{memory} structure.
-        \end{enumerate}
-\end{enumerate}
+  \subsection{Function to Initialize Memory}
+  \begin{enumerate}[label=\arabic*.,left=0pt]
+    \item Create a function \texttt{initializeMemory(sizes, length)}:
+          \begin{enumerate}[label=2.\arabic*.,left=0pt]
+            \item Allocate memory for \texttt{memory} structure.
+            \item Initialize \texttt{head} with the first block:
+                  \begin{enumerate}[label=2.2.\arabic*.,left=0pt]
+                    \item Allocate memory for the first \texttt{block}.
+                    \item Set \texttt{size}, \texttt{isOccupied}, \texttt{next}, and \texttt{prev} attributes.
+                    \item Set \texttt{head} and \texttt{tail} to the first block.
+                  \end{enumerate}
+            \item Initialize rest of the blocks:
+                  \begin{enumerate}[label=2.3.\arabic*.,left=0pt]
+                    \item Loop through the array \texttt{sizes} starting from index 1:
+                          \begin{enumerate}[label=2.3.\arabic*.,left=0pt]
+                            \item Allocate memory for a new \texttt{block}.
+                            \item Set \texttt{size}, \texttt{isOccupied}, \texttt{next}, and \texttt{prev} attributes.
+                            \item Link the new block to the previous block.
+                            \item Update \texttt{tail} to the new block.
+                            \item Update \texttt{totalSize} and \texttt{freeSize}.
+                          \end{enumerate}
+                  \end{enumerate}
+            \item Return the created \texttt{memory} structure.
+          \end{enumerate}
+  \end{enumerate}
 
-\subsection{Function to Display Memory}
-\begin{enumerate}[label=\arabic*.,left=0pt]
-  \item Create a function \texttt{displayMemory(m)}:
-        \begin{enumerate}[label=2.\arabic*.,left=0pt]
-          \item Print \texttt{totalSize} and \texttt{freeSize}.
-          \item Loop through the blocks and print whether they are occupied or free.
-          \item Loop through the blocks and print their sizes.
-        \end{enumerate}
-\end{enumerate}
+  \subsection{Function to Display Memory}
+  \begin{enumerate}[label=\arabic*.,left=0pt]
+    \item Create a function \texttt{displayMemory(m)}:
+          \begin{enumerate}[label=2.\arabic*.,left=0pt]
+            \item Print \texttt{totalSize} and \texttt{freeSize}.
+            \item Loop through the blocks and print whether they are occupied or free.
+            \item Loop through the blocks and print their sizes.
+          \end{enumerate}
+  \end{enumerate}
 
-\subsection{Function to Perform Garbage Collection}
-\begin{enumerate}[label=\arabic*.,left=0pt]
-  \item Create a function \texttt{garbageCollect(m)}:
-        \begin{enumerate}[label=2.\arabic*.,left=0pt]
-          \item Loop through the blocks:
-                \begin{enumerate}[label=2.2.\arabic*.,left=0pt]
-                  \item Check if the current block and its previous block are both unoccupied.
-                  \item Merge the current block into the previous block.
-                  \item Update \texttt{tail} to the previous block.
-                  \item Free the current block.
-                \end{enumerate}
-        \end{enumerate}
-\end{enumerate}
+  \subsection{Function to Perform Garbage Collection}
+  \begin{enumerate}[label=\arabic*.,left=0pt]
+    \item Create a function \texttt{garbageCollect(m)}:
+          \begin{enumerate}[label=2.\arabic*.,left=0pt]
+            \item Loop through the blocks:
+                  \begin{enumerate}[label=2.2.\arabic*.,left=0pt]
+                    \item Check if the current block and its previous block are both unoccupied.
+                    \item Merge the current block into the previous block.
+                    \item Update \texttt{tail} to the previous block.
+                    \item Free the current block.
+                  \end{enumerate}
+          \end{enumerate}
+  \end{enumerate}
 
-\subsection{Function for First Fit Allocation}
-\begin{enumerate}[label=\arabic*.,left=0pt]
-  \item Create a function \texttt{firstFit(m, size)}:
-        \begin{enumerate}[label=2.\arabic*.,left=0pt]
-          \item Loop through the blocks:
-                \begin{enumerate}[label=2.2.\arabic*.,left=0pt]
-                  \item Check if the block is unoccupied and has enough size for the allocation.
-                  \item Allocate the block for the required size.
-                  \item If the block size is equal to the required size, return.
-                  \item Create a new block for the remaining size and update the linked list.
-                  \item If the allocated block is the last block, update \texttt{tail}.
-                \end{enumerate}
-        \end{enumerate}
-\end{enumerate}
+  \subsection{Function for First Fit Allocation}
+  \begin{enumerate}[label=\arabic*.,left=0pt]
+    \item Create a function \texttt{firstFit(m, size)}:
+          \begin{enumerate}[label=2.\arabic*.,left=0pt]
+            \item Loop through the blocks:
+                  \begin{enumerate}[label=2.2.\arabic*.,left=0pt]
+                    \item Check if the block is unoccupied and has enough size for the allocation.
+                    \item Allocate the block for the required size.
+                    \item If the block size is equal to the required size, return.
+                    \item Create a new block for the remaining size and update the linked list.
+                    \item If the allocated block is the last block, update \texttt{tail}.
+                  \end{enumerate}
+          \end{enumerate}
+  \end{enumerate}
 
-\subsection{Function for Best Fit Allocation}
-\begin{enumerate}[label=\arabic*.,left=0pt]
-  \item Create a function \texttt{bestFit(m, size)}:
-        \begin{enumerate}[label=2.\arabic*.,left=0pt]
-          \item Initialize \texttt{best} as \texttt{NULL}.
-          \item Loop through the blocks:
-                \begin{enumerate}[label=2.2.\arabic*.,left=0pt]
-                  \item Check if the block is unoccupied and has enough size for the allocation.
-                  \item If \texttt{best} is \texttt{NULL} or the current block has a smaller size than \texttt{best}, update \texttt{best}.
-                \end{enumerate}
-          \item If \texttt{best} is still \texttt{NULL}, print an error message and return.
-          \item Allocate the block for the required size.
-          \item If the block size is equal to the required size, return.
-          \item Create a new block for the remaining size and update the linked list.
-          \item If the allocated block is the last block, update \texttt{tail}.
-        \end{enumerate}
-\end{enumerate}
+  \subsection{Function for Best Fit Allocation}
+  \begin{enumerate}[label=\arabic*.,left=0pt]
+    \item Create a function \texttt{bestFit(m, size)}:
+          \begin{enumerate}[label=2.\arabic*.,left=0pt]
+            \item Initialize \texttt{best} as \texttt{NULL}.
+            \item Loop through the blocks:
+                  \begin{enumerate}[label=2.2.\arabic*.,left=0pt]
+                    \item Check if the block is unoccupied and has enough size for the allocation.
+                    \item If \texttt{best} is \texttt{NULL} or the current block has a smaller size than \texttt{best}, update \texttt{best}.
+                  \end{enumerate}
+            \item If \texttt{best} is still \texttt{NULL}, print an error message and return.
+            \item Allocate the block for the required size.
+            \item If the block size is equal to the required size, return.
+            \item Create a new block for the remaining size and update the linked list.
+            \item If the allocated block is the last block, update \texttt{tail}.
+          \end{enumerate}
+  \end{enumerate}
 
-\subsection{Function for Worst Fit Allocation}
-\begin{enumerate}[label=\arabic*.,left=0pt]
-  \item Create a function \texttt{worstFit(m, size)}:
-        \begin{enumerate}[label=2.\arabic*.,left=0pt]
-          \item Initialize \texttt{worst} as \texttt{NULL}.
-          \item Loop through the blocks:
-                \begin{enumerate}[label=2.2.\arabic*.,left=0pt]
-                  \item Check if the block is unoccupied and has enough size for the allocation.
-                  \item If \texttt{worst} is \texttt{NULL} or the current block has a larger size than \texttt{worst}, update \texttt{worst}.
-                \end{enumerate}
-          \item If \texttt{worst} is still \texttt{NULL}, print an error message and return.
-          \item Allocate the block for the required size.
-          \item If the block size is equal to the required size, return.
-          \item Create a new block for the remaining size and update the linked list.
-          \item If the allocated block is the last block, update \texttt{tail}.
-        \end{enumerate}
-\end{enumerate}
+  \subsection{Function for Worst Fit Allocation}
+  \begin{enumerate}[label=\arabic*.,left=0pt]
+    \item Create a function \texttt{worstFit(m, size)}:
+          \begin{enumerate}[label=2.\arabic*.,left=0pt]
+            \item Initialize \texttt{worst} as \texttt{NULL}.
+            \item Loop through the blocks:
+                  \begin{enumerate}[label=2.2.\arabic*.,left=0pt]
+                    \item Check if the block is unoccupied and has enough size for the allocation.
+                    \item If \texttt{worst} is \texttt{NULL} or the current block has a larger size than \texttt{worst}, update \texttt{worst}.
+                  \end{enumerate}
+            \item If \texttt{worst} is still \texttt{NULL}, print an error message and return.
+            \item Allocate the block for the required size.
+            \item If the block size is equal to the required size, return.
+            \item Create a new block for the remaining size and update the linked list.
+            \item If the allocated block is the last block, update \texttt{tail}.
+          \end{enumerate}
+  \end{enumerate}
 
-\subsection{Function for Freeing Memory}
-\begin{enumerate}[label=\arabic*.,left=0pt]
-  \item Create a function \texttt{freeMemory(m, index)}:
-        \begin{enumerate}[label=2.\arabic*.,left=0pt]
-          \item Loop through the blocks:
-                \begin{enumerate}[label=2.2.\arabic*.,left=0pt]
-                  \item Check if the block is occupied.
-                  \item If the index matches the occupied block, free the block.
-                  \item Update \texttt{freeSize}.
-                  \item If the freed block is the last block, update \texttt{tail}.
-                \end{enumerate}
-        \end{enumerate}
-\end{enumerate}
+  \subsection{Function for Freeing Memory}
+  \begin{enumerate}[label=\arabic*.,left=0pt]
+    \item Create a function \texttt{freeMemory(m, index)}:
+          \begin{enumerate}[label=2.\arabic*.,left=0pt]
+            \item Loop through the blocks:
+                  \begin{enumerate}[label=2.2.\arabic*.,left=0pt]
+                    \item Check if the block is occupied.
+                    \item If the index matches the occupied block, free the block.
+                    \item Update \texttt{freeSize}.
+                    \item If the freed block is the last block, update \texttt{tail}.
+                  \end{enumerate}
+          \end{enumerate}
+  \end{enumerate}
 
-\subsection{Main Function}
-\begin{enumerate}[label=\arabic*.,left=0pt]
-  \item Initialize an array of block sizes.
-  \item Initialize memory using \texttt{initializeMemory}.
-  \item Display the initial state of memory using \texttt{displayMemory}.
-  \item Allocate memory using worst fit, best fit, and free memory functions.
-  \item Perform garbage collection.
-  \item Display the final state of memory.
-\end{enumerate}
-
+  \subsection{Main Function}
+  \begin{enumerate}[label=\arabic*.,left=0pt]
+    \item Initialize an array of block sizes.
+    \item Initialize memory using \texttt{initializeMemory}.
+    \item Display the initial state of memory using \texttt{displayMemory}.
+    \item Allocate memory using worst fit, best fit, and free memory functions.
+    \item Perform garbage collection.
+    \item Display the final state of memory.
+  \end{enumerate}
+ }
 \section{C Program}
 
 \begin{lstlisting}[label={list:c_program2:graph-GraphAdjList}]
