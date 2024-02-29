@@ -105,40 +105,44 @@ void mergeSort(int *arr, int l, int r)
   free(sorted);
 }
 
+int partition(int *arr, int l, int r)
+{
+  int p = l;
+  while (l < r)
+  {
+    while (arr[p] <= arr[r] && p < r)
+    {
+      r--;
+    }
+    if (arr[p] > arr[r])
+    {
+      int t = arr[p];
+      arr[p] = arr[r];
+      arr[r] = t;
+      p = r;
+    }
+    while (arr[p] >= arr[l] && p > l)
+    {
+      l++;
+    }
+    if (arr[p] < arr[l])
+    {
+      int t = arr[p];
+      arr[p] = arr[l];
+      arr[l] = t;
+      p = l;
+    }
+  }
+  return p;
+}
+
 void quickSort(int *arr, int l, int r)
 {
   if (l >= r)
   {
     return;
   }
-  int p = l;
-  int k = l + 1;
-  int s = r;
-  while (arr[k] <= arr[p] && k <= r)
-  {
-    k++;
-  }
-  while (k <= s)
-  {
-    if (arr[k] <= arr[p])
-    {
-      k++;
-      continue;
-    }
-    if (arr[s] <= arr[p])
-    {
-      int t = arr[k];
-      arr[k] = arr[s];
-      arr[s] = t;
-      k++;
-    }
-    s--;
-  }
-  k--;
-  int t = arr[k];
-  arr[k] = arr[p];
-  arr[p] = t;
-
+  int k = partition(arr, l, r);
   quickSort(arr, l, k - 1);
   quickSort(arr, k + 1, r);
 }
