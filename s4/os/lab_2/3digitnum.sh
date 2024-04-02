@@ -11,6 +11,7 @@ for (( i = 100; i <= 333; i++ )); do
 		d=($d/10)
 	done
 	if [[ flag -eq 0 ]]; then
-		echo $i
+		echo -ne $i
+		echo -ne " "
 	fi
 done
