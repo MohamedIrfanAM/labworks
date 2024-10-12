@@ -1,13 +1,8 @@
-FIRST   START   4000H
-        LDX     ZERO
-        LDA     ZERO
-LOOP    ADD     TABLE,X
-        TIX     COUNT
-        JLT     LOOP
-        STA     TOTAL
-        RSUB
-TABLE   RESW    2000
-COUNT   RESW    1
-ZERO    WORD    0
-TOTAL   RESW    1
-        END     FIRST
+PGM1    START   1000
+        LDA     ALPHA
+        MUL     BETA
+        STA     GAMMA
+ALPHA   WORD    2
+BETA    WORD    4
+GAMMA   RESW    1
+        END     1000

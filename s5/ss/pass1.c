@@ -161,6 +161,7 @@ int main()
   instruction inst;
   int LOCCTR = 0;
   int startAddress = 0;
+  int first = 1;
   while (fgets(line, 200, input) != NULL)
   {
     inst = extractInstruction(line);
@@ -168,6 +169,8 @@ int main()
     {
       LOCCTR = convetHex(inst.operand);
       startAddress = LOCCTR;
+      fprintf(output, "%s %s %s %s\n", "", inst.label, inst.opcode, inst.operand);
+      continue;
     }
     else if (fetchOpcode(inst.opcode) != "")
     {
@@ -191,12 +194,20 @@ int main()
     }
     else if (strcmp(inst.opcode, "END") == 0)
     {
+      fprintf(output, "%s %s %s %s\n", "", inst.label, inst.opcode, inst.operand);
+      break;
     }
     else
     {
       printf("Invalid opcode %s\n", inst.opcode);
       printf("Exiting...\n");
       exit(0);
+    }
+
+    if (first == 1)
+    {
+      LOCCTR = startAddress;
+      first = 0;
     }
 
     if (strcmp(inst.label, "") != 0)
