@@ -57,35 +57,16 @@ char *fetchOpcode(char *opcode)
   optab = fopen("optab.txt", "r");
   char line[100];
   char op[10];
-  static char code[10];
-  while (fgets(line, 100, optab) != NULL)
+  char *code = malloc(10 * sizeof(char));
+  while (fscanf(optab, "%s %s", op, code) != EOF)
   {
-    int i = 0;
-    int j = 0;
-    while (line[i] != ' ')
-    {
-      op[j] = line[i];
-      i++;
-      j++;
-    }
-    while (line[i] == ' ')
-    {
-      i++;
-    }
-    op[j] = '\0';
-    j = 0;
-    while (line[i] != ' ' && line[i] != '\n' && line[i] != '\0')
-    {
-      code[j] = line[i];
-      i++;
-      j++;
-    }
-    code[j] = '\0';
     if (strcmp(op, opcode) == 0)
     {
+      fclose(optab);
       return code;
     }
   }
+  fclose(optab);
   return "";
 }
 
@@ -116,32 +97,12 @@ char *fetchSymbol(char *symbol)
   symtab = fopen("symtab.txt", "r");
   char line[100];
   char sym[10];
-  static char addr[10];
-  while (fgets(line, 100, symtab) != NULL)
+  char *addr = malloc(10 * sizeof(char));
+  while (fscanf(symtab, "%s %s", sym, addr) != EOF)
   {
-    int i = 0;
-    int j = 0;
-    while (line[i] != ' ')
-    {
-      sym[j] = line[i];
-      i++;
-      j++;
-    }
-    while (line[i] == ' ')
-    {
-      i++;
-    }
-    sym[j] = '\0';
-    j = 0;
-    while (line[i] != ' ' && line[i] != '\n' && line[i] != '\0')
-    {
-      addr[j] = line[i];
-      i++;
-      j++;
-    }
-    addr[j] = '\0';
     if (strcmp(sym, symbol) == 0)
     {
+      fclose(symtab);
       return addr;
     }
   }
@@ -150,18 +111,20 @@ char *fetchSymbol(char *symbol)
 
 int main()
 {
-  FILE *symtab, *optab, *input, *output;
+  FILE *symtab, *optab, *input, *output, *length;
 
   input = fopen("addition.asm", "r");
   output = fopen("intermediate.txt", "w");
   symtab = fopen("symtab.txt", "w");
   optab = fopen("optab.txt", "r");
+  length = fopen("length.txt", "w");
 
   char line[200];
   instruction inst;
   int LOCCTR = 0;
-  int startAddress = 0;
+  int startAddress;
   int first = 1;
+  int programSize = 0;
   while (fgets(line, 200, input) != NULL)
   {
     inst = extractInstruction(line);
@@ -169,16 +132,18 @@ int main()
     {
       LOCCTR = convetHex(inst.operand);
       startAddress = LOCCTR;
-      fprintf(output, "%s %s %s %s\n", "", inst.label, inst.opcode, inst.operand);
+      fprintf(output, "%04X %s %s %s\n", LOCCTR, inst.label, inst.opcode, inst.operand);
       continue;
     }
     else if (fetchOpcode(inst.opcode) != "")
     {
       LOCCTR += 3;
+      programSize += 3;
     }
     else if (strcmp(inst.opcode, "WORD") == 0)
     {
       LOCCTR += 3;
+      programSize += 3;
     }
     else if (strcmp(inst.opcode, "RESW") == 0)
     {
@@ -191,11 +156,10 @@ int main()
     else if (strcmp(inst.opcode, "BYTE") == 0)
     {
       LOCCTR += 1;
+      programSize += 1;
     }
     else if (strcmp(inst.opcode, "END") == 0)
     {
-      fprintf(output, "%s %s %s %s\n", "", inst.label, inst.opcode, inst.operand);
-      break;
     }
     else
     {
@@ -223,9 +187,8 @@ int main()
         fprintf(symtab, "%s %04X\n", inst.label, LOCCTR);
       }
     }
-    // printf("%s %s %s\n", inst.label, inst.opcode, inst.operand);
-    fprintf(output, "%04X %s %s %s\n", LOCCTR, inst.label, inst.opcode, inst.operand);
+    fprintf(output, "%04X %s %s %s\n", LOCCTR, strcmp(inst.label, "") == 0 ? "-" : inst.label, inst.opcode, inst.operand);
   }
   int programLength = LOCCTR - startAddress;
-  fprintf(output, "%d\n", programLength);
+  fprintf(length, "%06X %06X\n", programSize, programLength);
 }
