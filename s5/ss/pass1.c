@@ -176,7 +176,7 @@ int main()
 
     if (strcmp(inst.label, "") != 0)
     {
-      if (fetchSymbol(inst.label) != "")
+      if (strcmp(fetchSymbol(inst.label), "") != 0)
       {
         printf("Duplicate symbol %s\n", inst.label);
         printf("Exiting...\n");
@@ -190,5 +190,5 @@ int main()
     fprintf(output, "%04X %s %s %s\n", LOCCTR, strcmp(inst.label, "") == 0 ? "-" : inst.label, inst.opcode, inst.operand);
   }
   int programLength = LOCCTR - startAddress;
-  fprintf(length, "%06X %06X\n", programSize, programLength);
+  fprintf(length, "%02X %06X\n", programSize, programLength);
 }
